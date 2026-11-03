@@ -1,6 +1,6 @@
-# GuitChords
+# ChordNotebook
 
-GuitChords es una aplicación web para explorar, construir, guardar y practicar
+ChordNotebook es una aplicación web para explorar, construir, guardar y practicar
 acordes de guitarra. La interfaz se ejecuta en el navegador; React y TypeScript
 gestionan las páginas y el estado, Vite sirve y empaqueta el proyecto, y Dexie
 guarda los acordes en IndexedDB.
@@ -39,6 +39,7 @@ npm run preview  # Sirve localmente la compilación de producción
 │   ├── main.tsx                  # Punto de entrada; monta React en #root
 │   ├── assets/                   # hero.png, react.svg y vite.svg
 │   └── components/
+│       ├── HelpDialog.tsx        # Ayuda contextual para cada página
 │       ├── Config.tsx            # Afinación base, notas cromáticas y tipos compartidos
 │       ├── Database.tsx          # Esquema IndexedDB, persistencia y metadatos de acordes
 │       ├── Navigation.tsx        # Selector de página
@@ -85,15 +86,19 @@ npm run preview  # Sirve localmente la compilación de producción
 - **Chord Library** (`src/components/Pages/ChordLibrary.tsx`): consulta los
   acordes almacenados, busca por nombre, filtra por etiquetas y permite
   administrar favoritos y acordes personalizados.
+- **Ayuda contextual** (`src/components/HelpDialog.tsx`): el botón de ayuda
+  superior abre un diálogo con instrucciones y consejos específicos de la
+  página activa.
 - **Menu Settings** (`src/components/Pages/MenuSettings.tsx`): panel compartido
   para preferencias musicales y de práctica, como alteraciones, colores,
   velocidad y modo/tempo de ejercicio.
 
 ## Módulos compartidos
 
-- `src/components/Database.tsx` define `FlashChordsDB`, con las tablas
+- `src/components/Database.tsx` define `ChordNotebookDB`, con las tablas
   `globalChords` y `customChords`, además de las operaciones para guardar y
-  recuperar acordes, nombres, favoritos y etiquetas.
+  recuperar acordes, nombres, favoritos y etiquetas. Conserva el nombre interno
+  anterior de IndexedDB para mantener los datos guardados por versiones previas.
 - `src/components/Config.tsx` define la afinación estándar de seis cuerdas
   (de 6.ª a 1.ª), sus octavas, las escalas cromáticas y los tipos compartidos
   usados por los selectores.
@@ -108,6 +113,12 @@ npm run preview  # Sirve localmente la compilación de producción
   guitarra y Web Audio API.
 - `src/components/Navigation.tsx` presenta las páginas disponibles y comunica
   el cambio de página a `App`.
+- `src/components/HelpDialog.tsx` recibe la página activa y el estado de
+  apertura para mostrar su contenido de ayuda contextual. Es un diálogo
+  accesible: devuelve el foco al botón de ayuda al cerrarse, permite cerrarlo
+  con Escape o haciendo clic fuera, y mantiene el foco dentro mientras está
+  abierto. Al abrirlo bloquea el desplazamiento del fondo y lo restaura al
+  cerrarse.
 - `src/App.tsx` mantiene las preferencias y el estado de navegación compartido.
   La página activa y el tema se conservan en `localStorage` cuando está
   disponible.

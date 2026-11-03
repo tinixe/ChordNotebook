@@ -421,6 +421,109 @@ html[data-theme="night"] .finder-results-empty {
   color: #334155;
 }
 
+.help-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(7 17 31 / 62%);
+  backdrop-filter: blur(5px);
+}
+
+.help-dialog {
+  box-sizing: border-box;
+  width: min(100%, 34rem);
+  max-height: min(85vh, 42rem);
+  overflow-y: auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid #dce5ee;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgb(56 189 248 / 12%), transparent 20rem),
+    #fff;
+  color: #1e293b;
+  box-shadow: 0 24px 80px rgb(3 10 20 / 35%);
+}
+
+.help-dialog-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.help-dialog-eyebrow {
+  margin: 0 0 0.4rem;
+  color: #0284c7;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.help-dialog h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.help-dialog-close {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #dce5ee;
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 75%);
+  color: #475569;
+  cursor: pointer;
+}
+
+.help-dialog-close:hover {
+  border-color: #7dd3fc;
+  color: #0369a1;
+}
+
+.help-dialog-close:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+.help-dialog-introduction {
+  margin: 1.25rem 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.help-dialog-steps {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding-left: 1.35rem;
+  line-height: 1.55;
+}
+
+.help-dialog-steps li {
+  padding-left: 0.25rem;
+}
+
+.help-dialog-steps li::marker {
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.help-dialog-tip {
+  margin: 1.25rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgb(14 165 233 / 20%);
+  border-radius: 0.85rem;
+  background: rgb(224 242 254 / 65%);
+  color: #334155;
+  line-height: 1.55;
+}
+
 html[data-theme="night"] {
   color-scheme: dark;
   background: #0b111a;
@@ -439,6 +542,30 @@ html[data-theme="night"] .app-main > section {
     radial-gradient(ellipse at 50% 0%, rgba(14, 116, 144, 0.14), transparent 38rem),
     #0b111a;
   border-color: #243244;
+}
+
+html[data-theme="night"] .help-dialog {
+  border-color: #304055;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgb(14 116 144 / 22%), transparent 20rem),
+    #131e2c;
+  color: #e2e8f0;
+}
+
+html[data-theme="night"] .help-dialog-introduction {
+  color: #bdc9d8;
+}
+
+html[data-theme="night"] .help-dialog-close {
+  border-color: #304055;
+  background: #1b2939;
+  color: #cbd5e1;
+}
+
+html[data-theme="night"] .help-dialog-tip {
+  border-color: rgb(56 189 248 / 25%);
+  background: rgb(14 116 144 / 18%);
+  color: #dbeafe;
 }
 
 html[data-theme="night"] [class~="bg-white"],

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Builder } from './components/Pages/Builder';
 import { Navigation } from './components/Navigation';
 import { MenuSettings } from './components/Pages/MenuSettings';
@@ -11,6 +11,7 @@ import type { ExerciseMode } from './components/Config';
 import { CircleHelp, Moon, Sun } from 'lucide-react';
 import { ChordLibrary } from './components/Pages/ChordLibrary';
 import { Finder } from './components/Pages/Finder';
+import { HelpDialog } from './components/HelpDialog';
 // Persistencia
 const NAVIGATION_STORAGE_KEY = 'active_tab_v1';
 const THEME_STORAGE_KEY = 'color_theme_v1';
@@ -31,6 +32,8 @@ export const App = () => {
   const [tempoBpm, setTempoBpm] = useState(72);
   const [exerciseMode, setExerciseMode] = useState<ExerciseMode>('common-tones');
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
+  const [isHelpOpen, setIsHelpOpen] = useState<boolean>(false);
+  const helpButtonRef = useRef<HTMLButtonElement>(null);
   const [theme, setTheme] = useState<'day' | 'night'>(() => {
     try {
       return localStorage.getItem(THEME_STORAGE_KEY) === 'night' ? 'night' : 'day';
@@ -85,6 +88,10 @@ export const App = () => {
     });
   };
 
+  const handleHelpClose = useCallback(() => {
+    setIsHelpOpen(false);
+    window.requestAnimationFrame(() => helpButtonRef.current?.focus());
+  }, []);
 
   return (
     <div className="app-shell min-h-screen bg-[#f3f7fb] text-slate-900">
@@ -92,6 +99,7 @@ export const App = () => {
 
       <div className="fixed right-4 top-3 z-50 flex items-center gap-2 sm:right-6">
         <button
+          ref={helpButtonRef}
           type="button"
           aria-label={theme === 'day' ? 'Activar modo noche' : 'Activar modo día'}
           aria-pressed={theme === 'night'}
@@ -107,6 +115,9 @@ export const App = () => {
           type="button"
           aria-label="Ayuda"
           title="Ayuda"
+          aria-haspopup="dialog"
+          aria-expanded={isHelpOpen}
+          onClick={() => setIsHelpOpen(true)}
           className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 shadow-sm transition-colors hover:border-sky-400/40 hover:bg-sky-400/10 hover:text-sky-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
         >
           <CircleHelp size={21} aria-hidden="true" />
@@ -135,6 +146,11 @@ export const App = () => {
         setExerciseMode={setExerciseMode}
         tempoBpm={tempoBpm}
         setTempoBpm={setTempoBpm}
+      />
+      <HelpDialog
+        activeTab={activeTab}
+        isOpen={isHelpOpen}
+        onClose={handleHelpClose}
       />
     </div>
   );

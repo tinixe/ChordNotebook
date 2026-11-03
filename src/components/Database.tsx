@@ -98,12 +98,12 @@ export const setChordFavorite = async (chordId: string, isFavorite: boolean) => 
   await db.globalChords.update(chordId, { isFavorite });
 };
 
-export class FlashChordsDB extends Dexie {
+export class ChordNotebookDB extends Dexie {
   globalChords!: Table<GlobalChord>;
   customChords!: Table<CustomChord, (number|'x')[]>;
 
   /**
-   * Inicializa la base de datos FlashChordsDB y declara las tablas e índices
+   * Inicializa la base de datos local y declara las tablas e índices
    * usados para acordes globales y personalizados.
    * @precondition Dexie está disponible en el entorno de ejecución.
    * @postcondition La instancia queda asociada al esquema de versión 2; no abre la base hasta que Dexie lo requiera.
@@ -123,7 +123,7 @@ export class FlashChordsDB extends Dexie {
   }
 }
 
-export const db = new FlashChordsDB();
+export const db = new ChordNotebookDB();
 
 // --- FUNCIONES AUXILIARES ---
 

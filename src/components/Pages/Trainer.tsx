@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Fretboard } from '../utils/Fretboard';
-import { Play, Settings, Minus, Plus, X } from 'lucide-react';
+import { Play, Settings, Plus, X } from 'lucide-react';
 import { CHROMATIC_SHARPS, CHROMATIC_FLATS } from '../Config';
 import { extensions, fetchAllMatchingChords, fetchNextChord, getChordName, getVoiceLeadingMetrics } from '../utils/AuxFunctions';
 import { playChordSound } from '../utils/SoundLogic';

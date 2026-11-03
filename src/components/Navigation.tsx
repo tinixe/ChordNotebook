@@ -64,7 +64,7 @@ export const Navigation: FC<NavigationProps> = ({ activeTab, setActiveTab }) => 
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-400 text-[#07111f] shadow-[0_0_24px_rgba(56,189,248,0.24)]">
             <Guitar size={20} strokeWidth={2.2} aria-hidden="true" />
           </span>
-          <span className="text-lg font-semibold tracking-tight text-white sm:text-xl">GuitChords</span>
+          <span className="text-lg font-semibold tracking-tight text-white sm:text-xl">ChordNotebook</span>
         </div>
 
         {isOpen && (
