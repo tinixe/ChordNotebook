@@ -1,7 +1,7 @@
 # ChordNotebook
 
-ChordNotebook es una aplicación web para explorar, construir, guardar y practicar
-acordes de guitarra. La interfaz se ejecuta en el navegador; React y TypeScript
+[ChordNotebook](https://chord-notebook-navy.vercel.app/) es una aplicación web para explorar, construir, guardar y practicar
+acordes de guitarra, como una libreta interactiva online. La interfaz se ejecuta en el navegador; React y TypeScript
 gestionan las páginas y el estado, Vite sirve y empaqueta el proyecto, y Dexie
 guarda los acordes en IndexedDB.
 
