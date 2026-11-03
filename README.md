@@ -130,10 +130,3 @@ guarda los acordes en IndexedDB.
   compilación, los estilos y el análisis de TypeScript.
 - `.oxlintrc.json` configura el linter; `.gitignore` excluye dependencias,
   artefactos generados y archivos locales.
-
-## Notas de desarrollo
-
-`FutureWork` contiene ideas pendientes de trabajo y está incluido en
-`.gitignore` intencionadamente: el archivo queda local y no se añade a los
-cambios versionados. Las dependencias se gestionan con npm; al modificar
-`package.json`, actualiza también `package-lock.json`.
