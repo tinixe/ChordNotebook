@@ -22,9 +22,8 @@ export const ChordLibrary: React.FC<ChordLibraryProps> = ({ accidentals = 'sharp
 
   // Inicializador para la Biblioteca
   /**
-   * Carga desde localStorage los filtros anteriores y proporciona valores iniciales cuando falla la lectura.
-   * @precondition El almacenamiento puede estar vacío, ser ilegible o contener JSON inválido.
-   * @postcondition Devuelve una búsqueda vacía y etiquetas vacías por defecto, o el estado recuperado.
+   * Carga desde localStorage los filtros anteriores y proporciona valores iniciales.
+   * @postcondition Devuelve el estado recuperado o, en caso de fallo, una búsqueda vacía y etiquetas vacías por defecto.
    */
   const getInitialLibraryState = () => {
     try {

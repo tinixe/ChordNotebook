@@ -73,6 +73,8 @@ export const Builder: React.FC<BuilderProps> = ({
   const [tempExtension, setTempExtension] = useState<string>('');
   const [chordName, setChordName] = useState('');
 
+
+  // Gestiona la notificación temporal que sale al guardar un acorde
   useEffect(() => {
     if (!saveNotification) return;
 
@@ -144,7 +146,6 @@ export const Builder: React.FC<BuilderProps> = ({
     }
   }, [selectedFrets]);
 
-  // Gestiona la interacción con el diapasión
   /**
    * Alterna el traste seleccionado en una cuerda y actualiza la figura del acorde.
    * @param stringIndex Índice de la cuerda que se ha pulsado.
@@ -159,7 +160,6 @@ export const Builder: React.FC<BuilderProps> = ({
     setSelectedFrets(updated);
   };
 
-  // Guarda el acorde en IndexedDB. Si el acorde no tiene cuerdas al aire, lo transpone por toda el mástil
   /**
    * Guarda el acorde y sus etiquetas; transpone figuras móviles y notifica al consumidor si corresponde.
    * @precondition Debe haber un nombre de acorde calculado; una figura móvil debe contener al menos un traste numérico.
@@ -296,15 +296,6 @@ export const Builder: React.FC<BuilderProps> = ({
               >
                 <Save className="w-8 h-8" />
               </button>
-
-              {/* Botón Resetear Diapasón
-              <button
-                onClick={handleResetBuilder}
-                className="w-14 h-14 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center transition-all shadow-sm active:scale-95"
-                title="Resetear diapasón"
-              >
-                <Trash2 className="w-6 h-6" />
-              </button> */}
               </div>
             </div>
 
