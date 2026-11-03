@@ -10,21 +10,6 @@ guarda los acordes en IndexedDB.
 - Node.js compatible con Vite 8.
 - npm.
 
-## Desarrollo
-
-```bash
-npm ci
-npm run dev
-```
-
-Otros comandos disponibles:
-
-```bash
-npm run build    # Comprobación TypeScript y compilación de producción
-npm run lint     # Análisis estático con Oxlint
-npm run preview  # Sirve localmente la compilación de producción
-```
-
 ## Organización
 
 ```text
