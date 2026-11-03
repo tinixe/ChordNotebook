@@ -1,7 +1,7 @@
 # ChordNotebook
 
-ChordNotebook es una aplicación web para explorar, construir, guardar y practicar
-acordes de guitarra. La interfaz se ejecuta en el navegador; React y TypeScript
+[ChordNotebook](https://chord-notebook-navy.vercel.app/) es una aplicación web para explorar, construir, guardar y practicar
+acordes de guitarra, como una libreta interactiva online. La interfaz se ejecuta en el navegador; React y TypeScript
 gestionan las páginas y el estado, Vite sirve y empaqueta el proyecto, y Dexie
 guarda los acordes en IndexedDB.
 
@@ -9,21 +9,6 @@ guarda los acordes en IndexedDB.
 
 - Node.js compatible con Vite 8.
 - npm.
-
-## Desarrollo
-
-```bash
-npm ci
-npm run dev
-```
-
-Otros comandos disponibles:
-
-```bash
-npm run build    # Comprobación TypeScript y compilación de producción
-npm run lint     # Análisis estático con Oxlint
-npm run preview  # Sirve localmente la compilación de producción
-```
 
 ## Organización
 
@@ -145,10 +130,3 @@ npm run preview  # Sirve localmente la compilación de producción
   compilación, los estilos y el análisis de TypeScript.
 - `.oxlintrc.json` configura el linter; `.gitignore` excluye dependencias,
   artefactos generados y archivos locales.
-
-## Notas de desarrollo
-
-`FutureWork` contiene ideas pendientes de trabajo y está incluido en
-`.gitignore` intencionadamente: el archivo queda local y no se añade a los
-cambios versionados. Las dependencias se gestionan con npm; al modificar
-`package.json`, actualiza también `package-lock.json`.
